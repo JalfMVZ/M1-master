@@ -16,6 +16,12 @@ function DecimalABinario(num) {
 /*La instrucción return devuelve el resultado de la expresión num.toString(2) 
 y la función toString() se utiliza para convertir un número en una representación de cadena de texto */
 
+
+var decimal = 4
+var binario = DecimalABinario(decimal);
+console.log("El numero decimal  " + decimal + "en binario es: " + binario )
+
+
 module.exports = {
    BinarioADecimal,
    DecimalABinario,
