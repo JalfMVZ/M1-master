@@ -91,22 +91,23 @@ console.log(pm); // The flash , reverse flash , the flash , franco
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3" = 2
-"2" * "3"  6
-4 + 5 + "px" = 9px
-"$" + 4 + 5 = $45
-"4" - 2 = 2
-"4px" - 2 = NaN
-7 / 0 = Infinity
-{}[0] = undefined
-parseInt("09") = 9
-5 && 2 = 2
-2 && 5 = 5
-5 || 0 = 5
-0 || 5 = 5
-[3]+[3]-[10] = 23
-3>2>1 = false
-[] == ![] = true
+6 / "3"         // Resultado: 2 (la cadena "3" se convierte implícitamente en número)
+"2" * "3"       // Resultado: 6 (las cadenas "2" y "3" se convierten implícitamente en números)
+4 + 5 + "px"    // Resultado: "9px" (la suma de 4 y 5 es 9, y se concatena con la cadena "px")
+"$" + 4 + 5     // Resultado: "$45" (la concatenación de las cadenas "$", "4" y "5")
+"4" - 2         // Resultado: 2 (la cadena "4" se convierte implícitamente en número)
+"4px" - 2       // Resultado: NaN (la cadena "4px" no puede convertirse en número)
+7 / 0           // Resultado: Infinity (división entre un número y cero)
+{}[0]           // Resultado: undefined ({} es un objeto vacío, y al acceder a la propiedad [0] se obtiene undefined)
+parseInt("09")  // Resultado: 9 (se analiza la cadena como un número entero, y se ignora el cero inicial)
+5 && 2          // Resultado: 2 (el operador && devuelve el último valor si ambos son verdaderos)
+2 && 5          // Resultado: 5 (el operador && devuelve el último valor si ambos son verdaderos)
+5 || 0          // Resultado: 5 (el operador || devuelve el primer valor verdadero)
+0 || 5          // Resultado: 5 (el operador || devuelve el primer valor verdadero)
+[3]+[3]-[10]    // Resultado: 23 (las cadenas se convierten en arreglos y luego se concatenan y restan)
+3>2>1           // Resultado: false (la expresión se evalúa de izquierda a derecha, y 3 > 2 es true, pero true > 1 es false)
+[] == ![]       // Resultado: true ([] se convierte en una cadena vacía, y ![] se convierte en false, luego se comparan como cadenas y son iguales)
+
 ```
 <!--  -->
 
