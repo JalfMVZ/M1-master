@@ -46,11 +46,11 @@ function cacheFunction(cb) {
   return function (arg) {
     if (cache.hasOwnProperty(arg)) {
       return cache[arg];
-    } else {
-      const result = cb(arg);
-      cache[arg] = result;
-      return result;
     }
+
+    const result = cb(arg);
+    cache[arg] = result;
+    return result;
   };
 }
 
@@ -78,8 +78,8 @@ function getNombre() {
   Usando el método bind() guardar, en las dos variables declaradas a continuación, dos funciones que actúen como getNombre pero retornen el nombre del instructor y del alumno, respectivamente.
 */
 
-let getNombreInstructor = getNombre.bind(instructor);
-let getNombreAlumno = getNombre.bind(alumno);
+let getNombreInstructor = getNombre.bind();
+let getNombreAlumno = getNombre.bind();
 
 /*
   Ejercicio 4
@@ -90,9 +90,9 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind(null, '*');
-let textoGuiones = crearCadena.bind(null, '-');
-let textoUnderscore = crearCadena.bind(null, '_');
+let textoAsteriscos = crearCadena.bind();
+let textoGuiones = crearCadena.bind();
+let textoUnderscore = crearCadena.bind();
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
