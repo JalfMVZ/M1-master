@@ -40,36 +40,35 @@ otra vez cálculos que ya se hicieron anteriormente.
   squareCache(5)    // invocará a square(5), almacenará el resultado y lo retornará
   squareCache(5)    // no volverá a invocar a square, simplemente buscará en la caché cuál es el resultado de square(5) y lo retornará (tip: si usaste un objeto, podés usar hasOwnProperty) */
 
-// function cacheFunction(cb) {
-//   const cache = {};
-
-//   return function (key) {
-//     if (cache.hasOwnProperty(key)) {
-//       return cache[key];
-//     }
-
-//     const result = cb(key);
-//     cache[key] = result;
-//     return result;
-//   };
-// }
-
-// Code 2
-
 function cacheFunction(cb) {
   const cache = {};
-  return function (key) {
+    return function (key) {
     if (cache.hasOwnProperty(key)) {
       return cache[key];
-    } else {
-      let init = cb(key);
-      cache[key] = init;
-      return cache[key];
     }
+
+    const result = cb(key);
+    cache[key] = result;
+    return result;
   };
 }
 
-function square(n){
+// Code 2
+
+// function cacheFunction(cb) {
+//   const cache = {};
+//   return function (key) {
+//     if (cache.hasOwnProperty(key)) {
+//       return cache[key];
+//     } else {
+//       let init = cb(key);
+//       cache[key] = init;
+//       return cache[key];
+//     }
+//   };
+// }
+
+function square(n) {
   return n * n
 }
 
