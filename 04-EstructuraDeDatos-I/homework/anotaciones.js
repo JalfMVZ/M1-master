@@ -67,3 +67,35 @@ console.log(sumArr(arr))
    Tablas Hash
    Grafucis
     */
+
+// Crear moldes
+
+class Stack {
+    constructor() {
+        this.data = [];
+
+    }
+}
+
+
+Stack.prototype.add = function (value) {
+    this.data.push(value)
+};
+
+
+Stack.prototype.add = function () {
+    this.data.pop();
+};
+
+
+const stackito = new Stack() // la instacia de una clase siempre es un objeto
+console.log(stackito); // Stack { data: [], push:f() }
+
+stackito.add(8);
+stackito.add(9);
+stackito.add(10);
+console.log(stackito);
+
+
+stackito.remove();
+console.log(stackito); 
