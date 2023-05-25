@@ -22,7 +22,7 @@ function nFactorial(n) {
   if (n === 0 || n === 1) {
     // Caso base: el factorial de 0 y 1 es 1
     return 1;
-  // } else {
+    // } else {
     // multiplicar n por el factorial de n-1
     return n * nFactorial(n - 1);
   }
@@ -41,6 +41,7 @@ function nFibonacci(n) {
     return nFibonacci(n - 1) + nFibonacci(n - 2);
   }
 }
+
 
 
 /*
