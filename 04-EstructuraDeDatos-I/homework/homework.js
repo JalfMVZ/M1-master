@@ -17,23 +17,27 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 // 5 * 4 * 3 * 2 * 1 =              4 * 3 * 2 * 1
 // Recursion -> corte ! 1 = 1  !0 = 1
 
+// Función recursiva para calcular el factorial de un número
 function nFactorial(n) {
   if (n === 0 || n === 1) {
+    // Caso base: el factorial de 0 y 1 es 1
     return 1;
-  } else {
+  // } else {
+    // multiplicar n por el factorial de n-1
     return n * nFactorial(n - 1);
   }
 }
 
-
-
-
+// Función recursiva para calcular el enésimo número de la secuencia de Fibonacci
 function nFibonacci(n) {
   if (n === 0) {
+    // Caso base: el primer número de Fibonacci es 0
     return 0;
   } else if (n === 1) {
+    // Caso base: el segundo número de Fibonacci es 1
     return 1;
   } else {
+    // sumar los dos números de Fibonacci anteriores
     return nFibonacci(n - 1) + nFibonacci(n - 2);
   }
 }
@@ -48,23 +52,30 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 Pueden utilizar class o función constructora.
 */
 
+
+// Clase Queue (cola) que sigue el principio FIFO
 class Queue {
   constructor() {
-    this.queue = [];
+    this.queue = []; // Array para almacenar los elementos de la cola
   }
 
+  // Agregar un valor al final de la cola
   enqueue(value) {
     this.queue.push(value);
   }
 
+  // Remover y devolver el primer valor de la cola
   dequeue() {
     if (this.queue.length === 0) {
+      // Si la cola está vacía, retornar undefined
       return undefined;
     } else {
+      // Remover y retornar el primer elemento de la cola
       return this.queue.shift();
     }
   }
 
+  // Obtener el tamaño (cantidad de elementos) de la cola
   size() {
     return this.queue.length;
   }
