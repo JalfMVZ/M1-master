@@ -22,6 +22,9 @@ function counter() {
   };
 }
 
+
+
+
 /* Ejercicio 2
 Tu tarea aquí es lograr, mediante un closure, que cacheFunction actúe como una memoria caché para el callback 
 que recibe por parámetro (cb); es decir, que "recuerde" el resultado de cada operación que hace, de manera que, 
@@ -53,7 +56,7 @@ function cacheFunction(cb) {
   };
 }
 
-// Code 2
+// Solución 2
 
 // function cacheFunction(cb) {
 //   const cache = {};
