@@ -10,7 +10,75 @@ Implementar la clase LinkedList, definiendo los siguientes métodos:
   search(isEven), donde isEven es una función que retorna true cuando recibe por parámetro un número par, busca un nodo cuyo valor sea un número par.
   En caso de que la búsqueda no arroje resultados, search debe retornar null.
 */
-function LinkedList() {}
+
+function LinkedList() {
+  this.head = null; //  cabeza de la lista como null
+  this.tail = null; // cola de la lista como null
+}
+
+function Node(value) {
+  this.value = value; // valor del nodo
+  this.next = null; // enlace al siguiente nodo, inicialmente null
+}
+
+LinkedList.prototype.add = function (value) {
+  const newNode = new Node(value); //  nuevo nodo con el valor proporcionado
+
+  if (!this.head) {
+    // si la lista está vacía
+    this.head = newNode; // el nuevo nodo se convierte en la cabeza
+    this.tail = newNode; // el nuevo nodo también se convierte en la cola
+  } else {
+    this.tail.next = newNode; // el enlace next del nodo actual de la cola al nuevo nodo
+    this.tail = newNode; // actualiza la cola para que sea el nuevo nodo
+  }
+};
+
+LinkedList.prototype.remove = function () {
+  if (!this.head) {
+    // si la lista está vacía
+    return null; // nada que eliminar, así que retorna null
+  }
+
+  let removedValue;
+
+  if (this.head === this.tail) {
+    // caso de un solo nodo en la lista
+    removedValue = this.head.value; // guarda el valor del nodo a eliminar
+    this.head = null; // estable la cabeza y la cola como null
+    this.tail = null;
+  } else {
+    let currentNode = this.head;
+    while (currentNode.next !== this.tail) {
+      // recorre la lista hasta el nodo anterior al nodo de la cola
+      currentNode = currentNode.next;
+    }
+    removedValue = this.tail.value; // guarda el valor del nodo de la cola a eliminar
+    this.tail = currentNode; // actualiza la cola al nodo anterior
+    this.tail.next = null; // establece el enlace next del nuevo nodo de la cola como null
+  }
+
+  return removedValue; // retorna el valor del nodo eliminado
+};
+
+LinkedList.prototype.search = function (param) {
+  let currentNode = this.head;
+  while (currentNode) {
+    if (typeof param === 'function') {
+      // si el parámetro es una función
+      if (param(currentNode.value)) {
+        // llama a la función pasando el valor del nodo actual como argumento
+        return currentNode.value; // si la función retorna true, encuentra un nodo con el valor buscado, así que lo retornamos
+      }
+    } else if (currentNode.value === param) {
+      // si el parámetro es un valor
+      return currentNode.value; // si encuentra un nodo con el valor buscado lo retorna
+    }
+    currentNode = currentNode.next; // pasa al siguiente nodo
+  }
+  return null; // si no encuentra el valor buscado, retorna null
+};
+
 
 function Node(value) {}
 
