@@ -16,10 +16,6 @@ function LinkedList() {
   this.tail = null; // cola de la lista como null
 }
 
-function Node(value) {
-  this.value = value; // valor del nodo
-  this.next = null; // enlace al siguiente nodo, inicialmente null
-}
 
 LinkedList.prototype.add = function (value) {
   const newNode = new Node(value); //  nuevo nodo con el valor proporcionado
@@ -80,7 +76,11 @@ LinkedList.prototype.search = function (param) {
 };
 
 
-function Node(value) {}
+function Node(value) {
+  this.value = value; // valor del nodo
+  this.next = null; // enlace al siguiente nodo, inicialmente null
+}
+
 
 /* EJERCICIO 2
 Implementar la clase HashTable.
@@ -95,13 +95,28 @@ La clase debe tener los siguientes métodos:
 
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
-function HashTable() {}
+function HashTable() {
+  this.numBuckets = 35; // numero de buckets (contenedores) en la tabla
+  this.buckets = new Array(this.numBuckets); //  arreglo de buckets con el tamaño especificado
+}
+
+HashTable.prototype.hash = function (input) {
+  let hash = 0;
+  for (let i = 0; i < input.length; i++) {
+    // recorre cada caracter del input
+    hash += input.charCodeAt(i); // suma el código numérico de cada caracter al hash
+  }
+  return hash % this.numBuckets; // calcula el módulo del hash para determinar el cont se almacenará el dato
+};
+
+
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
 
 module.exports = {
-   Node,
-   LinkedList,
-   HashTable,
+  Node,
+  LinkedList,
+  HashTable,
 };
