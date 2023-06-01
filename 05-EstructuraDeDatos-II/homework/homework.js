@@ -33,7 +33,7 @@ LinkedList.prototype.add = function (value) {
 LinkedList.prototype.remove = function () {
   if (!this.head) {
     // si la lista está vacía
-    return null; // nada que eliminar, así que retorna null
+    return null; // no elimina nada , retorna null
   }
 
   let removedValue;
@@ -95,20 +95,40 @@ La clase debe tener los siguientes métodos:
 
 Ejemplo: supongamos que quiero guardar {instructora: 'Ani'} en la tabla. Primero puedo chequear, con hasKey, si ya hay algo en la tabla con el nombre 'instructora'; luego, invocando set('instructora', 'Ani'), se almacenará el par clave-valor en un bucket específico (determinado al hashear la clave)
 */
+// Definición de la clase HashTable
 function HashTable() {
-  this.numBuckets = 35; // numero de buckets (contenedores) en la tabla
-  this.buckets = new Array(this.numBuckets); //  arreglo de buckets con el tamaño especificado
+  this.numBuckets = 35; // Número de buckets en la tabla
+  this.buckets = new Array(this.numBuckets); // Arreglo que almacena los buckets
 }
 
+// Función hasheadora que determina en qué bucket se almacenará un dato
 HashTable.prototype.hash = function (input) {
   let hash = 0;
   for (let i = 0; i < input.length; i++) {
-    // recorre cada caracter del input
-    hash += input.charCodeAt(i); // suma el código numérico de cada caracter al hash
+    hash += input.charCodeAt(i); // Suma el código numérico de cada caracter del input
   }
-  return hash % this.numBuckets; // calcula el módulo del hash para determinar el cont se almacenará el dato
+  return hash % this.numBuckets; // Calcula el módulo del hash para determinar el índice del bucket
 };
 
+// Almacena un conjunto clave-valor en la tabla
+HashTable.prototype.set = function (key, value) {
+  const index = this.hash(key); // Obtiene el índice del bucket correspondiente a la clave
+  if (!this.buckets[index]) {
+    // Si el bucket está vacío, crea un nuevo arreglo para almacenar los pares clave-valor
+    this.buckets[index] = [];
+  } else {
+    // Si el bucket ya tiene elementos, busca si existe la clave y actualiza su valor
+    for (let i = 0; i < this.buckets[index].length; i++) {
+      if (this.buckets[index][i].key === key) {
+        this.buckets[index][i].value = value; // Actualiza el valor del par clave-valor existente
+        return; // Termina la ejecución del método
+      }
+    }
+  }
+  this.buckets[index].push({ key, value }); // Agrega el par clave-valor al bucket
+};
+
+// Obtiene el valor asociado a una clave en la tabla
 
 
 
